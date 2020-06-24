@@ -231,3 +231,27 @@ def points(games):
     return p
 
 print(points(['1:0','2:0','3:0','4:0','2:1','3:1','4:1','3:2','4:2','4:3']))
+
+
+n1 = int(input('Enter number of elements of Fib sequence '))
+
+
+# TODO HW: Rewrite code, which will return only needed element of Fib sequence.
+# Fixed variant, from last class
+
+def fib(n):
+    fib_1 = 1
+    fib_2 = 1
+    if n > 1:
+        index = 0
+        while index < n-2:
+            fib_1, fib_2 = fib_2, fib_1+fib_2
+            index += 1
+        return fib_2
+    elif n == 1:
+        return 1
+    else:
+        return 0
+
+
+print(fib(n1))
