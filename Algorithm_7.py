@@ -88,11 +88,11 @@ Selection sort with Key
 """
 
 
-def selection_sort(array):
+def selection_sort(array, key):
     for i in range(len(array)):
         min_ind = i
         for j in range(i+1, len(array)):
-            if array[min_ind]['age'] > array[j]['age']:
+            if array[min_ind][key] > array[j][key]:
                 min_ind = j
         array[i], array[min_ind] = array[min_ind], array[i]
     return array
@@ -114,7 +114,7 @@ unsorted_list = [
 ]
 
 print(f'input: {unsorted_list}')
-print(f'output: {selection_sort(unsorted_list)}')
+print(f'output: {selection_sort(unsorted_list, "age")}')
 
 
 """
@@ -122,11 +122,11 @@ Bubble sort with key
 """
 
 
-def bubble_sort(l):
+def bubble_sort(l, key):
     for i in range(len(l)):
         j = len(l)-1
         while j > 0:
-            if l[j]['age'] < l[j-1]['age']:
+            if l[j][key] < l[j-1][key]:
                 l[j], l[j-1] = l[j-1], l[j]
             j -= 1
     return l
@@ -148,7 +148,7 @@ unsorted_list = [
 ]
 
 print(f'input: {unsorted_list}')
-print(f'output: {bubble_sort(unsorted_list)}')
+print(f'output: {bubble_sort(unsorted_list, "age")}')
 
 
 """
@@ -156,11 +156,11 @@ Insertion Sort
 """
 
 
-def insertion_sort(l):
+def insertion_sort(l, key):
     for i in range(len(l)):
         temp = l[i]
         j = i - 1
-        while j >= 0 and temp['age'] < l[j]['age']:
+        while j >= 0 and temp[key] < l[j][key]:
             l[j+1] = l[j]
             j -= 1
         l[j+1] = temp
@@ -173,17 +173,17 @@ unsorted_list = [
         'age': 34
     },
     {
-        'name': 'Ilya',
-        'age': 25
-    },
-    {
         'name': 'Olga',
         'age': 29
+    },
+    {
+        'name': 'Ilya',
+        'age': 25
     }
 ]
 
 print(f'input: {unsorted_list}')
-print(f'output: {insertion_sort(unsorted_list)}')
+print(f'output: {insertion_sort(unsorted_list,"age")}')
 
 
 """
@@ -194,7 +194,7 @@ Tasks from Codewars.com
 # 1:
 
 """
-In this Kata, you will be given a string that may have mixed uppercase and lowercase letters 
+In this Kata, you will be given a string that may have mixed uppercase and lowercase letters
 and your task is to convert that string to either lowercase only or uppercase only based on:
 
 make as few changes as possible.
@@ -226,8 +226,8 @@ print(solve("code"))
 # 2:
 
 """
-Take an input string and return a string that is made up of the number 
-of occurences of each english letter in the input followed by that letter, sorted alphabetically. 
+Take an input string and return a string that is made up of the number
+of occurences of each english letter in the input followed by that letter, sorted alphabetically.
 The output string shouldn't contain chars missing from input (chars with 0 occurence); leave them out.
 
 An empty string, or one with no letters, should return an empty string.
